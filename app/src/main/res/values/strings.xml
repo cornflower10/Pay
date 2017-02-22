@@ -1,0 +1,37 @@
+<resources>
+    <!--<string name="app_name">会商掌柜</string>-->
+    <string name="app_name">微信和支付宝demo</string>
+    <string name="key"></string>
+    <!-- 分享 -->
+    <string name="share">分享</string>
+    <string name="share_title">分享到</string>
+    <string name="moments">朋友圈</string>
+    <string name="wechat">微信好友</string>
+    <string name="qq_zone">QQ空间</string>
+    <string name="qq">QQ好友</string>
+
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_unknown">发送返回</string>
+
+    <string name="action_search">搜索</string>
+    <string name="action_device_token">设备Token</string>
+    <string name="action_help_center">帮助中心</string>
+    <string name="action_about_us">关于信鸽</string>
+    <string name="device_title">您的设备Token为：</string>
+    <string name="device_hint">已成功上传至网页端测试设备页面</string>
+    <string name="action_clear">清除已收到通知</string>
+    <string name="action_setting">功能设置</string>
+    <string name="action_diagnosis">一键诊断</string>
+    <string name="version">信鸽Demo 2.3.5</string>
+    <string name="register">启动&amp;注册</string>
+    <string name="unregister">反注册</string>
+    <string name="tag">设置标签</string>
+    <string name="registerAccount">启动&amp;注册（绑定账号）</string>
+    <string name="delTag">删除标签</string>
+    <string name="clearCache">清除本地缓存</string>
+    <string name="copyToken">复制Token</string>
+    <string name="device">您的设备Token为：</string>
+    <string name="action_back">返回上级</string>
+</resources>

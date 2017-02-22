@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+    defaultConfig {
+        applicationId "com.cornflower.pay"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors{
+        Proc {
+            buildConfigField "String", "URL", "\"http://www.51hszg.com/xbos/\""
+            buildConfigField "String", "WEI_PAY", "\"pay/pay_weixinPrePay.action\""
+            buildConfigField "String", "ALIPAY", "\"alipay/alipay_orderInfo.action\""
+            buildConfigField "String", "APPID", "\"wx4c7b40f2ce4a29c5\""
+            buildConfigField "String", "APPRESULT", "\"alipay/alipay_validateAppResult.action\""
+        }
+        // "http://58.211.161.180:8080/alipay/validateAppResult"
+        Test_in {
+            buildConfigField "String", "URL", "\"http://58.211.161.180:8080/alipay/\""
+            buildConfigField "String", "WEI_PAY", "\"weixinPrePay\""
+            buildConfigField "String", "ALIPAY", "\"orderInfo\""
+            buildConfigField "String", "APPRESULT", "\"validateAppResult\""
+            buildConfigField "String", "WEIPAY_RESULT", "\"http://58.211.161.180:8080/alipay/validateWeixinAppResult\""
+            buildConfigField "String", "APPID", "\"wx4c7b40f2ce4a29c5\""
+
+            //二维码
+            buildConfigField "String", "DOWNLOAD_PAGE", "\" http://58.211.161.180:8080/alipay/downloadPage\""
+            //qq分享
+            buildConfigField "String", "QQ_APP_ID", "\"1105885138\""
+        }
+    }
+}
+
+task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
+    destinationDir file("$projectDir/libs")
+    baseName "Native_Libs2"
+    extension "jar"
+    from fileTree(dir: "libs", include: "**/*.so")
+    into "lib"
+}
+
+tasks.withType(JavaCompile) {
+    compileTask -> compileTask.dependsOn(nativeLibsToJar)
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    testCompile 'junit:junit:4.12'
+    compile files('libs/alipaySdk-20161009.jar')
+    //rxJava
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.0'
+    //network - squareup
+    compile 'com.squareup.retrofit2:retrofit:latest.release'
+    compile 'com.squareup.retrofit2:adapter-rxjava:latest.release'
+    compile 'com.squareup.okhttp3:okhttp:latest.release'
+    compile 'com.squareup.okhttp3:logging-interceptor:latest.release'
+    compile 'com.squareup.retrofit2:converter-gson:latest.release'
+    compile 'com.squareup.retrofit2:converter-scalars:latest.release'
+    compile files('libs/libammsdk.jar')
+    compile project(':library')
+    compile project(':takePhotolibrary')
+}
