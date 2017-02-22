@@ -12,14 +12,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
-import com.alipay.sdk.app.PayTask;
-import com.cornflower.pay.XGPush.*;
 import com.cornflower.pay.entity.AuthResult;
 import com.cornflower.pay.entity.PayResult;
 import com.cornflower.pay.h5.H5GetTakePhotoActivity;
-import com.tencent.android.tpush.XGPushManager;
 import com.cornflower.pay.presenter.PayPresenter;
 import com.cornflower.pay.view.PayView;
+import com.tencent.android.tpush.XGPushManager;
 import com.tencent.android.tpush.service.XGPushService;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
@@ -124,11 +122,11 @@ public class PayDemoActivity extends FragmentActivity implements PayView {
 	 * get the sdk version. 获取SDK版本号
 	 * 
 	 */
-	public void getSDKVersion() {
-		PayTask payTask = new PayTask(this);
-		String version = payTask.getVersion();
-		Toast.makeText(this, version, Toast.LENGTH_SHORT).show();
-	}
+//	public void getSDKVersion() {
+//		PayTask payTask = new PayTask(this);
+//		String version = payTask.getVersion();
+//		Toast.makeText(this, version, Toast.LENGTH_SHORT).show();
+//	}
 
 	/**
 	 * 原生的H5（手机网页版支付切natvie支付） 【对应页面网页支付按钮】
